@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="CalculatorSuite" parallel="methods" thread-count="3">
+    <listeners>
+        <listener class-name="listeners.TestListener"/>
+    </listeners>
+
+    <test name="SmokeTestsOnly">
+        <groups>
+            <run>
+                <include name="Smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.CalculatorTests"/>
+        </classes>
+    </test>
+
+    <test name="RegressionButExcludeSmoke">
+        <groups>
+            <run>
+                <include name="Regression"/>
+                <exclude name="Smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.CalculatorTests"/>
+        </classes>
+    </test>
+</suite>
