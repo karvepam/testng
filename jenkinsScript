@@ -1,0 +1,43 @@
+node {
+
+    stage('Checkout') {
+
+        echo 'Checking out code'
+
+        checkout scm
+    }
+
+    stage('Build') {
+
+        echo 'Building Project'
+
+        sh 'mvn clean compile'
+    }
+
+    stage('Test') {
+
+        echo 'Running Tests'
+
+        sh 'mvn test'
+    }
+
+    stage('Package') {
+
+        echo 'Packaging Application'
+
+        sh 'mvn package'
+    }
+
+    stage('Deploy') {
+
+        if(params.ENVIRONMENT == 'staging') {
+
+            echo 'Deploying to Staging'
+        }
+
+        if(params.ENVIRONMENT == 'production') {
+
+            echo 'Deploying to Production'
+        }
+    }
+}
