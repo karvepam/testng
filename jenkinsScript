@@ -11,21 +11,21 @@ node {
 
         echo 'Building Project'
 
-        sh 'mvn clean compile'
+        bat 'mvn clean compile'
     }
 
     stage('Test') {
 
         echo 'Running Tests'
 
-        sh 'mvn test'
+        bat 'mvn test'
     }
 
     stage('Package') {
 
         echo 'Packaging Application'
 
-        sh 'mvn package'
+        bat 'mvn package'
     }
 
     stage('Deploy') {
